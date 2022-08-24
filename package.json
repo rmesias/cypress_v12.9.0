@@ -1,0 +1,20 @@
+{
+  "devDependencies": {
+    "@testing-library/cypress": "^8.0.3",
+    "cypress": "^10.6.0",
+    "cypress-mailosaur": "^2.11.0"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^12.1.0",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "@cypress/webpack-preprocessor": "^5.12.2",
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4"
+  },
+  "cypress-cucumber-preprocessor": {
+    "json": {
+      "enabled": true,
+      "formatter": "cucumber-json-formatter"
+    }
+  }
+}
