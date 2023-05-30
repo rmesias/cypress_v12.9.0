@@ -19,7 +19,6 @@ jobs:
         with:
           wait-on: 'https://www.google.com/'
           browser: ${{ matrix.browser }}
-          group: 'Chrome e2e'
           spec: ./cypress/e2e/**
           config: "baseUrl=https://www.google.com/"
         env:
