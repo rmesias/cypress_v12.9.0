@@ -1,4 +1,4 @@
-name: test
+name: test-variables
 on:
   workflow_dispatch:
 
@@ -16,8 +16,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: create cypress .env
+      - name: Set Environment Variables
         run: |
-         echo "print variable in here ${{ env.TEST }}";
-         echo "print variable in here ${{env.TEST}}";
-         echo "print variable in here ${{secrets.TEST}}";
+          echo "API_URL=${{ secrets.QE_USERS }}" >> $GITHUB_ENV
+
+      - name: Access Secrets
+        run: |
+          echo "API_URL: $API_URL"
+          echo "CLIENT_USER: $CLIENT_USER"
+          echo "CLIENT_USER_PASSWORD: $CLIENT_USER_PASSWORD"
