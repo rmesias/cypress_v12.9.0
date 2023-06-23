@@ -19,7 +19,7 @@ jobs:
       - name: Create env file
         run: |
           touch test.json
-          echo TEST=${{secrets.TEST}} >> test.json
+          echo TEST=${{secrets.NOW}} >> test.json
 
       - name: Upload JSON artifact
         uses: actions/upload-artifact@v2
@@ -30,7 +30,8 @@ jobs:
       - name: Set Environment Variables
         run: |
           echo "API_URL=${{secrets.TEST}}" >> $GITHUB_ENV
-          echo ${{secrets.TEST}} | sed 's/./& /g'
+          echo ${{secrets.TEST.V}}
+          echoe ${{secrets.NOW}}
 
       - name: Access Secrets
         run: |
