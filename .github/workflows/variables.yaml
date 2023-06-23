@@ -18,8 +18,10 @@ jobs:
       
       - name: Create env file
         run: |
-          touch test.json
-          echo TEST=${{secrets.TEST.V}}} >> test.json
+          touch .env
+          echo NOW=${{secrets.NOW}} >> .env
+          echo TEST=${{secrets.TEST_A}} >> .env
+          echo TEST=${{secrets.TEST_V}} >> .env
 
       - name: Upload JSON artifact
         uses: actions/upload-artifact@v2
@@ -27,14 +29,14 @@ jobs:
           name: updated-cypress-env
           path: test.json
 
-      - name: Set Environment Variables
-        run: |
-          echo "API_URL=${{secrets.TEST}}" >> $GITHUB_ENV
-          echo ${{secrets.TEST.V}}
-          echo ${{secrets.NOW}}
+      # - name: Set Environment Variables
+      #   run: |
+      #     echo "API_URL=${{secrets.TEST}}" >> $GITHUB_ENV
+      #     echo ${{secrets.TEST.V}}
+      #     echo ${{secrets.NOW}}
 
-      - name: Access Secrets
-        run: |
-          echo "API_URL: $API_URL"
-          echo "CLIENT_USER: $CLIENT_USER"
-          echo "CLIENT_USER_PASSWORD: $CLIENT_USER_PASSWORD"
+      # - name: Access Secrets
+      #   run: |
+      #     echo "API_URL: $API_URL"
+      #     echo "CLIENT_USER: $CLIENT_USER"
+      #     echo "CLIENT_USER_PASSWORD: $CLIENT_USER_PASSWORD"
