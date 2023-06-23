@@ -18,7 +18,7 @@ jobs:
 
       - name: Set Environment Variables
         run: |
-          echo "API_URL=${{ secrets.QE_USERS }}" >> $GITHUB_ENV
+          echo "API_URL=${{ secrets.TEST }}" >> $GITHUB_ENV
 
       - name: Access Secrets
         run: |
