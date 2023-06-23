@@ -1,0 +1,23 @@
+name: test
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: [chrome]
+    container: 
+      image: cypress/browsers:node16.16.0-chrome107-ff107-edge
+      options: --user 1001
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: create cypress .env
+        run: |
+         echo "print variable in here ${{ env.TEST }}";
+         echo "print variable in here ${{env.TEST}}";
+         echo "print variable in here ${{secrets.TEST}}";
