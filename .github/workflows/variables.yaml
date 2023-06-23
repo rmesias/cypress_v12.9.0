@@ -1,4 +1,4 @@
-name: test
+name: test-variables
 on:
   workflow_dispatch:
 
@@ -15,9 +15,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: create cypress .env
+      
+      - name: Create env file
         run: |
-         echo "print variable in here ${{ env.TEST }}";
-         echo "print variable in here ${{env.TEST}}";
-         echo "print variable in here ${{secrets.TEST}}";
+          touch .env
+          echo NOW=${{secrets.NOW}} >> .env
+          echo TEST=${{secrets.TEST_A}} >> .env
+          echo TEST=${{secrets.TEST_V}} >> .env
+
+      - name: Upload JSON artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: updated-cypress-env
+          path: test.json
+
+      # - name: Set Environment Variables
+      #   run: |
+      #     echo "API_URL=${{secrets.TEST}}" >> $GITHUB_ENV
+      #     echo ${{secrets.TEST.V}}
+      #     echo ${{secrets.NOW}}
+
+      # - name: Access Secrets
+      #   run: |
+      #     echo "API_URL: $API_URL"
+      #     echo "CLIENT_USER: $CLIENT_USER"
+      #     echo "CLIENT_USER_PASSWORD: $CLIENT_USER_PASSWORD"
