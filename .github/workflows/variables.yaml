@@ -31,7 +31,7 @@ jobs:
         run: |
           echo "API_URL=${{secrets.TEST}}" >> $GITHUB_ENV
           echo ${{secrets.TEST.V}}
-          echoe ${{secrets.NOW}}
+          echo ${{secrets.NOW}}
 
       - name: Access Secrets
         run: |
