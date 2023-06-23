@@ -15,6 +15,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      
+      - name: Create env file
+        run: |
+          touch test.json
+          echo TEST=${{secrets.TEST}} >> test.json
+
+      - name: Upload JSON artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: updated-cypress-env
+          path: test.json
 
       - name: Set Environment Variables
         run: |
