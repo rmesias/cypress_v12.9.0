@@ -19,7 +19,7 @@ jobs:
       - name: Create env file
         run: |
           touch test.json
-          echo NOW=${{secrets.NOW}} >> test.json
+          echo NOW=${{secrets.TEST_NOW}} >> test.json
           echo TEST=${{secrets.TEST_A}} >> test.json
           echo TEST=${{secrets.TEST_V}} >> test.json
 
