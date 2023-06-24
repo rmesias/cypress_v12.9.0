@@ -15,13 +15,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      
-      - name: Create env file
+
+      - name: testing
+        env:
+          TEST_PRINT: ${{secrets.NOW}}
         run: |
           touch test.json
-          echo NOW=${{secrets.TEST_NOW}} >> test.json
-          echo TEST=${{secrets.TEST_A}} >> test.json
-          echo TEST=${{secrets.TEST_V}} >> test.json
+          echo NOW=${TEST_PRINT} >> test.json
+   
 
       - name: Upload JSON artifact
         uses: actions/upload-artifact@v2
