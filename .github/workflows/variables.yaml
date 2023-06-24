@@ -12,6 +12,7 @@ jobs:
     container: 
       image: cypress/browsers:node16.16.0-chrome107-ff107-edge
       options: --user 1001
+    environment: TEST
     steps:
       - name: Checkout
         uses: actions/checkout@v3
