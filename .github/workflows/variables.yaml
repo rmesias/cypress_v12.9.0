@@ -22,7 +22,7 @@ jobs:
           TEST_PRINT: ${{secrets.NOW}}
         run: |
           touch test.json
-          echo NOW=${TEST_PRINT} >> test.json
+          echo NOW=$TEST_PRINT >> test.json
    
 
       - name: Upload JSON artifact
